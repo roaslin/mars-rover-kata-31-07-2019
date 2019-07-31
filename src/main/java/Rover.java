@@ -1,32 +1,23 @@
 public class Rover {
-    private char direction;
+    private Direction direction;
 
     public Rover() {
-        this.direction = 'N';
+        this.direction = Direction.NORTH;
     }
 
     public String execute(String commands) {
         for (char command : commands.toCharArray()) {
 
-
             if ('L' == command) {
 
-                if ('N' == direction) {
+                this.direction = direction.toLeft();
+            }
 
-                    direction = 'W';
-                } else if ('W' == direction) {
+            if ('R' == command) {
 
-                    direction = 'S';
-                } else if ('S' == direction) {
-
-                    direction = 'E';
-                } else if ('E' == direction) {
-
-                    direction = 'N';
-                }
+                this.direction = direction.toRight();
             }
         }
-        return "0:0:" + direction;
-
+        return "0:0:" + direction.getName();
     }
 }

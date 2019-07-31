@@ -24,7 +24,19 @@ public class RoverShould {
             , "LLL,0:0:E"
             , "LLLL,0:0:N"
     })
-    public void rotate_left_once(String command, String position) {
+    public void rotate_left(String command, String position) {
+
+        assertThat(rover.execute(command), is(position));
+    }
+
+    @Test
+    @Parameters({
+            "R,0:0:E"
+            , "RR,0:0:S"
+            , "RRR,0:0:W"
+            , "RRRR,0:0:N"
+    })
+    public void rotate_right(String command, String position) {
 
         assertThat(rover.execute(command), is(position));
     }
