@@ -40,4 +40,30 @@ public class RoverShould {
 
         assertThat(rover.execute(command), is(position));
     }
+
+    @Test
+    @Parameters({
+            "M,1:0:N"
+            , "MM,2:0:N"
+            , "MMM,3:0:N"
+            , "MMM,3:0:N"
+    })
+    public void move(String command, String position) {
+
+        assertThat(rover.execute(command), is(position));
+    }
+
+
+    @Test
+    @Parameters({
+            "M,0:-1:S"
+            , "MM,0:-2:S"
+            , "MMM,0:-3:S"
+    })
+    public void move_south(String command, String position) {
+
+        rover = new Rover(Direction.SOUTH);
+
+        assertThat(rover.execute(command), is(position));
+    }
 }

@@ -1,9 +1,15 @@
 public class Rover {
     private Direction direction;
+    private int y = 0;
 
     public Rover() {
         this.direction = Direction.NORTH;
     }
+
+    public Rover(Direction direction) {
+        this.direction = direction;
+    }
+
 
     public String execute(String commands) {
         for (char command : commands.toCharArray()) {
@@ -17,7 +23,18 @@ public class Rover {
 
                 this.direction = direction.toRight();
             }
+
+            if ('M' == command) {
+
+                if (direction.equals(Direction.NORTH)) {
+                    y++;
+                }
+
+                if (direction.equals(Direction.SOUTH)) {
+                    y--;
+                }
+            }
         }
-        return "0:0:" + direction.getName();
+        return "0:" + y + ":" + direction.getName();
     }
 }
